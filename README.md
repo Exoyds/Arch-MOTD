@@ -12,6 +12,8 @@
       /'\_   _/`\
       \___)=(___/
 
+This is a personalised version for me, take a look at the diff to see if you like it.
+
 ![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/lfelipe1501/Arch-MOTD/issues)
 [![Build Status](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://github.com/lfelipe1501/Arch-MOTD/commits)

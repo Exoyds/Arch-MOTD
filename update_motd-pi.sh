@@ -8,6 +8,7 @@ motd="/etc/motd"
 HOSTNAME=`uname -n`
 KERNEL=`uname -r`
 CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
+CPUTEMP=`cat /sys/class/hwmon/hwmon0/device/temp | awk '{printf " %5.2f °C\n" , $1/1000}'`
 ARCH=`uname -m`
 DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
 DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
@@ -65,6 +66,7 @@ echo -e "$W   Good $TIME$A You're Logged Into $B$A$HOSTNAME$W! " 	    >> $motd
 echo -e "$G---------------------------------------------------------------" >> $motd
 echo -e "$B    KERNEL $G:$W $KERNEL $ARCH                                 " >> $motd
 echo -e "$B       CPU $G:$W $CPU                                          " >> $motd
+echo -e "$B  CPU TEMP $G:$W $CPUTEMP                                      " >> $motd
 echo -e "$B    MEMORY $G:$W $MEMORY1 / $MEMORY2 - $MEMPERCENT             " >> $motd
 echo -e "$B  USE DISK $G:$W $DISC (Used)                      	          " >> $motd
 echo -e "$G---------------------------------------------------------------" >> $motd

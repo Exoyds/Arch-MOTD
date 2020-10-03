@@ -9,7 +9,6 @@ HOSTNAME=`uname -n`
 KERNEL=`uname -r`
 CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
 ARCH=`uname -m`
-PACMAN=`pacman -Qu | wc -l`
 DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
 DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
 MEMORY1=`free -t -m | grep "Mem" | awk '{print $3" MB";}'`
@@ -50,16 +49,16 @@ N="\033[0m"
 #Clear screen before motd
 cat /dev/null > $motd
 
-echo -e "                                                                                      $G.~~.   .~~.$W
-        $B. $W                                                                           $G'. \ ' ' / .'$W
-       $B/#\ $W                     _     $B _ _                   $W _                       $R.~..~~~..~.$W
-      $B/###\ $W      __ _ _ __ ___| |__  $B| (_)_ __  _   ___  __ $W| |  _   ___ __  __     $R: .~.'~'.~. :$W
-     $B/#####\ $W    / _' | '__/ __| '_ \ $B| | | '_ \| | | \ \/ / $W| | / \ | _ \  \/  |   $R~ (   ) (   ) ~$W
-    $B/##.-.##\ $W  | (_| | | | (__| | | |$B| | | | | | |_| |>  <  $W| |/ ^ \|   / |\/| |  $R( : '~'.~.'~' : )$W
-   $B/##(   )##\ $W  \__,_|_|  \___|_| |_|$B|_|_|_| |_|\__._/_/\_\ $W| /_/ \_\_|_\_|  |_|   $R~ .~ (   ) ~. ~$W
-  $B/#.--   --.#\ $W                                             $W|_|     $G>$R Raspberry Pi$W  $R(  : '~' :  )$W
- $B/'           '\                                                                      $R'~ .~~~. ~'$W
-                                                                                          $R'~'$W"
+echo -e "                                                                                    
+        $B. $W                                                                          
+       $B/#\ $W                     _     $B _ _                   $W _                       
+      $B/###\ $W      __ _ _ __ ___| |__  $B| (_)_ __  _   ___  __ $W| |  _   ___ __  __     
+     $B/#####\ $W    / _' | '__/ __| '_ \ $B| | | '_ \| | | \ \/ / $W| | / \ | _ \  \/  |   
+    $B/##.-.##\ $W  | (_| | | | (__| | | |$B| | | | | | |_| |>  <  $W| |/ ^ \|   / |\/| |  
+   $B/##(   )##\ $W  \__,_|_|  \___|_| |_|$B|_|_|_| |_|\__._/_/\_\ $W| /_/ \_\_|_\_|  |_|   
+  $B/#.--   --.#\ $W                                             $W|_|     $G>$R Raspberry Pi$
+ $B/'           '\                                                                      "
+                                                                                          
 > $motd
 echo -e "$G---------------------------------------------------------------" >> $motd
 echo -e "$W   Good $TIME$A You're Logged Into $B$A$HOSTNAME$W! " 	    >> $motd
@@ -72,7 +71,6 @@ echo -e "$G---------------------------------------------------------------" >> $
 echo -e "$B  LOAD AVG $G:$W $LOAD1, $LOAD5, $LOAD15		          " >> $motd
 echo -e "$B    UPTIME $G:$W $upDays days $upHours hours $upMins minutes $upSecs seconds " >> $motd
 #echo -e "$B PROCESSES $G:$W You are running $PSU of $PSA processes        " >> $motd
-echo -e "$B    PACMAN $G:$W $PACMAN packages can be updated               " >> $motd
 echo -e "$B     USERS $G:$W `users | wc -w` users logged in 	          " >> $motd
 echo -e "$G---------------------------------------------------------------" >> $motd
 echo -e "$N" >> $motd

@@ -9,7 +9,7 @@ HOSTNAME=`uname -n`
 KERNEL=`uname -r`
 CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
 ARCH=`uname -m`
-PACMAN=`checkupdates | wc -l`
+PACMAN=`pacman -Qu | wc -l`
 DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
 DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
 MEMORY1=`free -t -m | grep "Mem" | awk '{print $3" MB";}'`
@@ -74,7 +74,5 @@ echo -e "$B    UPTIME $G:$W $upDays days $upHours hours $upMins minutes $upSecs 
 #echo -e "$B PROCESSES $G:$W You are running $PSU of $PSA processes        " >> $motd
 echo -e "$B    PACMAN $G:$W $PACMAN packages can be updated               " >> $motd
 echo -e "$B     USERS $G:$W `users | wc -w` users logged in 	          " >> $motd
-echo -e "$G---------------------------------------------------------------" >> $motd
-echo -e "  $W Please do not share your login and use$G sudo$W for$R root$W access " >> $motd
 echo -e "$G---------------------------------------------------------------" >> $motd
 echo -e "$N" >> $motd
